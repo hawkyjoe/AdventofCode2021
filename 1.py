@@ -1,3 +1,4 @@
+# --- Day 1: Sonar Sweep ---
 depthlist = []
 
 while True:
@@ -8,6 +9,7 @@ while True:
 
 
 def partone():
+    """Counts number of times the depth measurement (input) increases from previous value"""
     increases = 0
     index = -1
     for depth in depthlist:
@@ -22,6 +24,7 @@ def partone():
 
 
 def parttwo():
+    """Counts number of times the depth measurement (input) increases in 3-measurement sliding window"""
     increases = 0
     for i in range(len(depthlist)-3):
         if sum(depthlist[i+1:i+4]) > sum(depthlist[i:i+3]):

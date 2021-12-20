@@ -1,3 +1,4 @@
+# --- Day 6: Lanternfish ---
 def inp():
     with open("day 6 input.txt") as f:
         rawinput = f.readline().split(",")
@@ -6,6 +7,7 @@ def inp():
 
 
 def partone(fishlist):
+    """Calculates exponential growth of fish (tracking each fish)"""
     days = 18
     fishtimers = fishlist[:]
     for day in range(days):
@@ -19,6 +21,7 @@ def partone(fishlist):
 
 
 def parttwo(fishlist):
+    """Calculates exponential growth of fish (tracking age of fish)"""
     days = 256
     fishtimers = [] # ages: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, buffer], age = index - 1
 

@@ -1,3 +1,4 @@
+# --- Day 2: Dive! ---
 horizontallist = []
 depthlist = []
 bothlist = []
@@ -17,12 +18,14 @@ while True:
 
 
 def partone():
+    """Calculate horizontal position and depth"""
     horizontal = sum(horizontallist)
     depth = sum(depthlist)
     print("Part 1:", horizontal * depth)
 
 
 def parttwo():
+    """Calculate horizontal position and depth considering aim value"""
     horizontal = 0
     depth = 0
     aim = 0

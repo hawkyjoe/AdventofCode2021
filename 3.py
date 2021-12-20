@@ -1,4 +1,4 @@
-# doesn't work if all are removed during same (mostcommon[1] == leastcommon[1])
+# --- Day 3: Binary Diagnostic ---
 from collections import Counter
 
 binarylist = []
@@ -11,8 +11,9 @@ while True:
 
 
 def partone():
-    gammarate = ""
-    epsilonrate = ""
+    """Calculate gamma and epsilon rates"""
+    gammarate = "" # most common bit in each corresponding position
+    epsilonrate = "" # least common bit in each corresponding position
     for i in range(len(binarylist[0])):
         position = [] # holds characters for bit position i
         dictionary = {"0": 0, "1": 0}
@@ -31,8 +32,9 @@ def partone():
 
 
 def parttwo():
-    oxygengenerator = binarylist[:] # oxygen generator keeps most common value or 1 if equal
-    co2scrubber = binarylist[:] # co2 scrubber keeps least common value or 0 if equal
+    """Calculate oxygen generator and C02 scrubber ratings"""
+    oxygengenerator = binarylist[:] # filters out numbers, keeping the most common bit (or 1 if equal) in each position
+    co2scrubber = binarylist[:] # filters out numbers, keeping the least common bit (or 0 if equal) in each position
 
 # oxygengenerator
     for i in range(len(binarylist[0])):

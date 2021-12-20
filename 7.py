@@ -1,10 +1,11 @@
+# --- Day 7: The Treachery of Whales ---
 with open("day 7 input.txt") as f:
     rawinput = f.readline().split(",")
     hcoords = [int(x) for x in rawinput]
 
 
 def test1():
-    """Brute force part 1"""
+    """Position closest to all valuves (brute force part 1)"""
     fuel = 0
     position = False
     for i in range(max(hcoords)):
@@ -35,14 +36,14 @@ def partone():
 
 
 def test2():
-    """Brute force part 2, mean doesn't work lol"""
+    """Position closest to all values with triangular number steps (brute force part 2)"""
     fuel = 0
     position = False
     for i in range(max(hcoords)):
         currentfuel = 0
         for coord in hcoords:
             distance = abs(coord - i)
-            currentfuel += (distance * (distance + 1))/2 # triangular numbers
+            currentfuel += (distance * (distance + 1))/2 # triangular number formula
         if fuel != 0:
             if currentfuel < fuel:
                 fuel = currentfuel
@@ -57,4 +58,5 @@ def main():
     test2()
 
 
-main()
+if __name__ == "__main__":
+    main()
