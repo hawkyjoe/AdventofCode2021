@@ -1,29 +1,22 @@
 # --- Day 1: Sonar Sweep ---
-depthlist = []
-
-while True:
-    rawinput = input()
-    if rawinput == "":
-        break
-    depthlist.append(int(rawinput)) # comparing strings with > does each character left to right therefore 976 !> 1004
 
 
-def partone():
+def read_default_input():
+    strs_input = open("1_input.txt", "r").readlines()
+    return [ int(string) for string in strs_input ]
+    
+
+def partone(depthlist = []):
     """Counts number of times the depth measurement (input) increases from previous value"""
     increases = 0
-    index = -1
-    for depth in depthlist:
-        if depth == depthlist[0]:
-            index += 1
-        else:
-            index += 1
-            before = depthlist[index-1]
-            if depth > before:
-                increases += 1
+    for i in range(len(depthlist)-1):
+        curr_val, next_val = depthlist[i], depthlist[i+1]
+        if next_val > curr_val:
+            increases += 1
     print("Part 1:", increases)
 
 
-def parttwo():
+def parttwo( depthlist = []):
     """Counts number of times the depth measurement (input) increases in 3-measurement sliding window"""
     increases = 0
     for i in range(len(depthlist)-3):
@@ -31,6 +24,5 @@ def parttwo():
             increases += 1
     print("Part 2:", increases)
 
-
-partone()
-parttwo()
+partone(read_default_input())
+parttwo(read_default_input())
