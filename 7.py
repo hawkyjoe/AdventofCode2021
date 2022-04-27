@@ -1,5 +1,5 @@
 # --- Day 7: The Treachery of Whales ---
-with open("day 7 input.txt") as f:
+with open("7_input.txt") as f:
     rawinput = f.readline().split(",")
     hcoords = [int(x) for x in rawinput]
 

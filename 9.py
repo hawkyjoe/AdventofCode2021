@@ -1,5 +1,5 @@
 # --- Day 9: Smoke Basin ---
-with open("input.txt") as f:
+with open("9_input.txt") as f:
     rawinput = [[int(n) for n in line if n != "\n"] for line in f.readlines()]
 
 

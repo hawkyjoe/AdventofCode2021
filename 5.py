@@ -4,7 +4,7 @@ def inp():
     before = []
     after = []
 
-    with open("day 5 input.txt") as f:
+    with open("5_input.txt") as f:
         rawinput = f.readlines()
         for line in rawinput:
             temp = line.replace(" ", "").replace("\n", "").rpartition("->")
