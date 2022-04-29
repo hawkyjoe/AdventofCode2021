@@ -1,3 +1,4 @@
+# --- Day 10: Syntax Scoring ---
 with open("10_input.txt") as f:
     rawinput = [line.replace("\n", "") for line in f.readlines()]
 
