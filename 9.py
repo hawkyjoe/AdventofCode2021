@@ -4,7 +4,7 @@ with open("9_input.txt") as f:
 
 
 def partone():
-    """Find low points"""
+    """Checks if adjacent values are smaller, until lowpoint is found with all adjacent values greater"""
     lowpoints = []
     risklevel = []
     for ri, row in enumerate(rawinput):
@@ -13,12 +13,11 @@ def partone():
             adjacents = []
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    if abs(x+y) == 1 and ri+x >= 0 and ci+y >= 0:
+                    if abs(x+y) == 1 and ri+x >= 0 and ci+y >= 0: # if +/-1 in x and y (adjacent cells)
                         try:
                             adjacents.append(rawinput[ri+x][ci+y])
-                        except IndexError:
+                        except IndexError: # index error occurs at edge of grid where there are no adjacent values
                             continue
-
             lowpoint = True
             for value in adjacents:
                 if num >= value:
@@ -32,7 +31,7 @@ def partone():
 
 
 def parttwo(lowpoints):
-    """Scan around lowpoints for non 9 heights"""
+    """Scan around lowpoints for non 9 heights until no more values can be counted"""
     basinsizes = []
 
     for lowpoint in lowpoints:
@@ -43,7 +42,7 @@ def parttwo(lowpoints):
                 for y in range(-1, 2):
                     if abs(x + y) == 1 and ri + x >= 0 and ci + y >= 0:
                         try:
-                            if rawinput[ri + x][ci + y] != 9 and (ri+x, ci+y) not in adjacents:
+                            if rawinput[ri + x][ci + y] != 9 and (ri+x, ci+y) not in adjacents: # prevent duplicates
                                 adjacents.append((ri+x, ci+y))
                         except IndexError:
                             continue

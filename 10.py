@@ -3,7 +3,7 @@ with open("input.txt") as f:
 
 
 def partone():
-    """Identify corrupted chunks and calculate error score"""
+    """Remove completed brackets when close bracket is found or identify corrupted chunks"""
     brackets = {"(": ")",
                 "[": "]",
                 "{": "}",
@@ -28,7 +28,7 @@ def partone():
         if corrupted is False:
             incompletelist.append("".join(entrycopy))
 
-    for entry in corruptedlist:
+    for entry in corruptedlist: # score calculation
         if entry[2] == ")":
             errorscore.append(3)
         elif entry[2] == "]":
@@ -44,7 +44,7 @@ def partone():
 
 
 def parttwo(brackets, incompletelist):
-    """Complete incomplete chunks and calculate completion score"""
+    """Complete incomplete chunks"""
     completed = []
     completionscores = []
 
@@ -54,7 +54,7 @@ def parttwo(brackets, incompletelist):
             entrycopy.insert(0, brackets.get(x))
         completed.append("".join(entrycopy))
 
-    for complete in completed:
+    for complete in completed: # score calculation
         score = 0
         for bracket in complete:
             score = score * 5
