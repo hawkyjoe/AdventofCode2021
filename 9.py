@@ -52,6 +52,10 @@ def parttwo(lowpoints):
     print(f"Three largest basins: {basinsizes[0]} * {basinsizes[1]} * {basinsizes[2]} = {basinsizes[0] * basinsizes[1] * basinsizes[2]}")
 
 
+def main():
+    lowpoints = partone()
+    parttwo(lowpoints)
+
+
 if __name__ == "__main__":
-    lowpointlist = partone()
-    parttwo(lowpointlist)
+    main()
