@@ -14,9 +14,11 @@ def partone():
             for x in range(-1, 2):
                 for y in range(-1, 2):
                     if abs(x+y) == 1 and ri+x >= 0 and ci+y >= 0: # if +/-1 in x and y (adjacent cells)
+                        # ri/ci + x/y >= 0 prevents negative indices which do not result in index error
                         try:
                             adjacents.append(rawinput[ri+x][ci+y])
                         except IndexError: # index error occurs at edge of grid where there are no adjacent values
+                            # only caught if greater than size, i.e. can be avoided with ri/ci +x/y <= row/col length
                             continue
             lowpoint = True
             for value in adjacents:
