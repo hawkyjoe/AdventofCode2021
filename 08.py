@@ -3,7 +3,7 @@
 def inp():
     signals = []
     outputs = []
-    with open("8_input.txt") as file:
+    with open("input_08.txt") as file:
         rawinput = file.readlines()
         for line in rawinput:
             signals.append(line.replace("\n", "").partition("|")[0].strip(" ").split(" "))

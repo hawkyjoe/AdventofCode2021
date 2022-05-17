@@ -2,7 +2,7 @@
 
 
 def read_default_input():
-    strs_input = open("1_input.txt", "r").readlines()
+    strs_input = open("input_01.txt", "r").readlines()
     return [int(string) for string in strs_input]
     
 

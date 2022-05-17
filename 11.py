@@ -4,7 +4,7 @@ import numpy as np
 
 def inp():
     """Input processing"""
-    with open("11_input.txt") as f:
+    with open("input_11.txt") as f:
         rawinput = [[int(n) for n in line if n != "\n"] for line in f.readlines()]
     return np.array(rawinput)
 

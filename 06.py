@@ -1,6 +1,6 @@
 # --- Day 6: Lanternfish ---
 def inp():
-    with open("6_input.txt") as f:
+    with open("input_06.txt") as f:
         rawinput = f.readline().split(",")
         fishlist = [int(x) for x in rawinput]
     return fishlist

@@ -7,7 +7,7 @@ def inp():
     temp = []
     nestedboards = []
 
-    with open("4_input.txt") as f:
+    with open("input_04.txt") as f:
         numberlist = f.readline().replace("\n", "").split(",")
         boardlist = f.read().split()
         if len(boardlist) % 25 == 0:
