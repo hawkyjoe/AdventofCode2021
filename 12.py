@@ -1,6 +1,6 @@
 # --- Day 12: Passage Pathing ---
 from collections import Counter
-with open("12_input.txt") as f:
+with open("input_12.txt") as f:
     rawinput = [line.replace("\n", "") for line in f.readlines()]
 
 
