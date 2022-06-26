@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def inp():
+    """Input processing"""
     coords = []
     instructions = []
     with open("input_13.txt") as f:
@@ -16,6 +17,7 @@ def inp():
 
 
 def partone(coords, instructions):
+    """Prints number of dots remaining after the first fold instructions"""
     foldaxis, foldvalue = instructions[0]
     if foldaxis == "x": # fold left
         index = 0
@@ -28,12 +30,13 @@ def partone(coords, instructions):
     for coord in tofold:
         coord[index] = foldvalue - (coord[index] - foldvalue)
 
-    folded = [tuple(x) for x in tofold + remaining]
-    folded = list(set(folded))
+    folded = [tuple(x) for x in tofold + remaining] # lists are unhashable (mutable) and unable to be converted to sets
+    folded = list(set(folded)) # remove duplicates
     print(f"There are {len(folded)} dots remaining after the first fold instructions.")
 
 
 def parttwo(coords, instructions):
+    """Plots graph showing result of all fold instructions (8 capital letters)"""
     folded = coords
 
     for instruction in instructions:
