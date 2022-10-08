@@ -59,7 +59,8 @@ def parttwo(coords, instructions):
     plt.scatter(x, y)
     ax = plt.gca()
     ax.invert_yaxis() # invert axis required to show letters flipped correctly
-    plt.show() # plot subplot params can be adjusted show letters more clearly
+    plt.subplots_adjust(top=0.25) # plot subplot params adjusted to show letters more clearly
+    plt.show()
 
 
 def main():
