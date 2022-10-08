@@ -11,7 +11,7 @@ def partone():
     correctpaths = []
 
     for path in paths:
-        for (ci, current) in enumerate(path):
+        for ci, current in enumerate(path):
             connected = []
             first = True # first valid entry in connected
             pathcopy = path[:]
@@ -56,7 +56,7 @@ def parttwo():
     for path in paths:
         pathvisitedtwice = False # single small cave can be visited twice
         smallcaves = []
-        for (ci, current) in enumerate(path):
+        for ci, current in enumerate(path):
             connected = []
             first = True
             pathcopy = path[:]
