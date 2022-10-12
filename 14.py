@@ -1,11 +1,13 @@
 # --- Day 14: Extended Polyermization ---
 from collections import Counter
+import time
+start = time.time()
 
 
 def inp():
     """Input processing"""
     instructions = []
-    with open("input.txt") as f:
+    with open("input_14.txt") as f:
         template = f.readline().replace("\n", "")
         for line in f.readlines():
             if line != "\n":
@@ -31,14 +33,12 @@ def partone(template, instructions):
             templatelist.insert(i, x)
 
     result = Counter(templatelist).most_common()[0][1] - Counter(templatelist).most_common()[-1][1]
+    print(Counter(templatelist))
     print(f"The difference between the most and least common elements is {result}")
 
 
 def parttwo(template, instructions):
-
     """Pair insertion without positions"""
-    # store as counters
-
     inserts = list(zip(*instructions))[1]
     pairs = list(zip(*instructions))[0]
 
@@ -49,27 +49,21 @@ def parttwo(template, instructions):
     paircounter = Counter(templatepairs)
     elementcounter = Counter(template)
 
-    print(paircounter)
-
     for x in range(10):
-        add = [] # new pairs to add to count
-        remove = [] # old pairs to remove from count
+        add = {} # new pairs to add to count
+        remove = {} # old pairs to remove from count
         for pair, freq in paircounter.items():
-            if pair in pairs:
+            if pair in pairs and freq > 0:
                 insert = inserts[pairs.index(pair)]
-                add.extend(freq * [pair[0] + insert, insert + pair[1]])
-                remove.extend(freq * [pair])
+                add[pair[0] + insert] = add.get(pair[0] + insert, 0) + freq
+                add[insert + pair[1]] = add.get(insert + pair[1], 0) + freq
+                remove[pair] = remove.get(pair, 0) - freq
                 elementcounter.update(freq * insert)
 
         paircounter.update(add) # outside loop to avoid dictionary size change during iteration error
-
-        for pair in remove:
-            paircounter[pair] = paircounter[pair] - 1
-            if paircounter[pair] == 0:
-                del paircounter[pair]
+        paircounter.update(remove)
 
     print(elementcounter, paircounter)
-
     print(elementcounter.most_common()[0][1] - elementcounter.most_common()[-1][1])
 
 
@@ -77,6 +71,7 @@ def main():
     template, instructions = inp()
     # partone(template, instructions)
     parttwo(template, instructions)
+    print(time.time()-start)
 
 
 main()
