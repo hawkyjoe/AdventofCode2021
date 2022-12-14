@@ -1,18 +1,18 @@
 # --- Day 15: Chiton ---
 with open("input.txt") as f:
     rawinput = [[int(x) for x in line if x != "\n"] for line in f.readlines()]
-
+print(rawinput)
 lastindex = len(rawinput)-1
 
 
 def partone():
     paths = [[(rawinput[0][0], 0, 0)]]
     pathrisk = []
-    firstpath = True
+    firstpath = True # if not first path, the last index is used instead as they are established paths
     for path in paths:
         print("next path")
         for pi, point in enumerate(path):
-            if not firstpath:
+            if not firstpath: # 11
                 if pi + 1 != len(path):
                     continue
             value, ri, ci = point
@@ -27,14 +27,14 @@ def partone():
                     if abs(x + y) == 1 and ri + x >= 0 and ci + y >= 0:
                         try:
                             if (rawinput[ri + x][ci + y], ri + x, ci + y) not in path:  # prevent duplicates
-                                if first:
+                                if first: # first adjacent appends to path
                                     path.append((rawinput[ri + x][ci + y], ri + x, ci + y))
                                     first = False
                                     print("first", path)
                                     if (ri + x, ci + y) == (lastindex, lastindex):
                                         print("break inner")
                                         break
-                                else:
+                                else: # nonfirst adjacents append to paths
                                     pathcopy2 = pathcopy[:] # consecutive nonfirsts issue
                                     pathcopy2.append((rawinput[ri + x][ci + y], ri + x, ci + y))
                                     paths.append(pathcopy2)
